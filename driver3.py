@@ -71,7 +71,6 @@ def apriori(records, things, mSupport, mConfidence):
 		newCurrent = []
 		for p in possible:
 			newCurrent.append(tuple(p))
-		#currentLarge = [tuple(row) for row in possible]
 		newSelect = msupCheck(records,newCurrent,mSupport)
 		everything[i] = newSelect
 	allRecs = len(records)
