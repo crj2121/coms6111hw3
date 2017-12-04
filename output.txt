@@ -1,26 +1,59 @@
 ==Frequent itemsets (min_sup=10.0%)
-['pen'], 100%
-['ink'], 75%
-['diary'], 75%
-['pen', 'ink'], 75%
-['pen', 'diary'], 75%
-['soap'], 50%
-['ink', 'diary'], 50%
-['pen', 'soap'], 50%
-['ink', 'soap'], 50%
-['pen', 'ink', 'diary'], 50%
-['pen', 'ink', 'soap'], 50%
-['diary', 'soap'], 25%
-['ink', 'diary', 'soap'], 25%
-['pen', 'diary', 'soap'], 25%
+['A'], 80%
+['Critical'], 51%
+['Not Critical'], 47%
+['Not Critical', 'A'], 41%
+['MANHATTAN'], 40%
+['Critical', 'A'], 38%
+['MANHATTAN', 'A'], 32%
+['BROOKLYN'], 24%
+['American'], 23%
+['QUEENS'], 22%
+['MANHATTAN', 'Critical'], 20%
+['American', 'A'], 19%
+['MANHATTAN', 'Not Critical'], 19%
+['BROOKLYN', 'A'], 18%
+['QUEENS', 'A'], 18%
+['12'], 17%
+['12', 'A'], 17%
+['MANHATTAN', 'Not Critical', 'A'], 16%
+['MANHATTAN', 'Critical', 'A'], 15%
+['B'], 13%
+['BROOKLYN', 'Critical'], 12%
+['MANHATTAN', 'American'], 12%
+['American', 'Critical'], 12%
+['13'], 11%
+['13', 'A'], 11%
+['QUEENS', 'Critical'], 11%
+['10'], 11%
+['American', 'Not Critical'], 11%
+['10', 'A'], 11%
+['BROOKLYN', 'Not Critical'], 11%
+['QUEENS', 'Not Critical'], 10%
+['Chinese'], 10%
+['MANHATTAN', 'American', 'A'], 10%
+['Critical', '12'], 10%
+['Critical', '12', 'A'], 10%
 ==High-confidence association rules (min_conf=10.0%)
-['ink'] => ['pen'] (Conf: 100.0%, Supp: 75%)
-['diary'] => ['pen'] (Conf: 100.0%, Supp: 75%)
-['diary'] => ['ink'] (Conf: 66.66666666666666%, Supp: 50%)
-['soap'] => ['pen'] (Conf: 100.0%, Supp: 50%)
-['soap'] => ['diary'] (Conf: 50.0%, Supp: 25%)
-['soap'] => ['ink'] (Conf: 100.0%, Supp: 50%)
-['diary', 'soap'] => ['ink'] (Conf: 20.0%, Supp: 25%)
-['ink', 'diary'] => ['pen'] (Conf: 33.33333333333333%, Supp: 50%)
-['diary', 'soap'] => ['pen'] (Conf: 20.0%, Supp: 25%)
-['ink', 'soap'] => ['pen'] (Conf: 40.0%, Supp: 50%)
+['12'] => ['Critical'] (Conf: 58.61271676300579%, Supp: 10%)
+['American'] => ['MANHATTAN'] (Conf: 51.469353484466836%, Supp: 12%)
+['A'] => ['Not Critical'] (Conf: 51.24999999999999%, Supp: 41%)
+['A'] => ['Critical'] (Conf: 47.974999999999994%, Supp: 38%)
+['Not Critical'] => ['MANHATTAN'] (Conf: 41.39378673383711%, Supp: 19%)
+['A'] => ['MANHATTAN'] (Conf: 40.9%, Supp: 32%)
+['Critical'] => ['MANHATTAN'] (Conf: 39.93028659953525%, Supp: 20%)
+['A'] => ['American'] (Conf: 24.825%, Supp: 19%)
+['Critical'] => ['BROOKLYN'] (Conf: 24.670797831138653%, Supp: 12%)
+['Not Critical'] => ['American'] (Conf: 23.887489504617967%, Supp: 11%)
+['Critical'] => ['American'] (Conf: 23.50890782339272%, Supp: 12%)
+['Not Critical'] => ['BROOKLYN'] (Conf: 23.425692695214106%, Supp: 11%)
+['A'] => ['BROOKLYN'] (Conf: 23.375%, Supp: 18%)
+['A'] => ['QUEENS'] (Conf: 23.349999999999998%, Supp: 18%)
+['Not Critical'] => ['QUEENS'] (Conf: 23.047858942065492%, Supp: 10%)
+['Critical'] => ['QUEENS'] (Conf: 22.501936483346245%, Supp: 11%)
+['A'] => ['12'] (Conf: 21.624999999999996%, Supp: 17%)
+['A'] => ['13'] (Conf: 14.85%, Supp: 11%)
+['A'] => ['10'] (Conf: 14.149999999999999%, Supp: 11%)
+['Not Critical', 'A'] => ['MANHATTAN'] (Conf: 13.303039799435915%, Supp: 16%)
+['Critical', 'A'] => ['MANHATTAN'] (Conf: 11.759343664539653%, Supp: 15%)
+['12', 'A'] => ['Critical'] (Conf: 10.421377183967111%, Supp: 10%)

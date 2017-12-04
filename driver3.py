@@ -11,8 +11,6 @@ def msupCheck(records, items, mSupport):
 	selected = []
 	current= {}
 	uniqueThings = list(set(items))
-
-	#print(uniqueThings)
 	for item in uniqueThings:
 		for record in records:
 			exam= []
@@ -130,5 +128,6 @@ newestThings = sorted(newerThings, key=lambda x: x[1], reverse = True)
 for thing in newestThings:
 	output.write(str(thing[0]) + ", " + str(int(float(thing[1])*100)) + "%\n")
 output.write("==High-confidence association rules (min_conf=" + str(float(mConfidence)*100) + "%)\n")
-for rule in newRules:
+newerRules = sorted(newRules, key=lambda y: float(y[1]), reverse = True)
+for rule in newerRules:
 	output.write(str(rule[0][0]) + " => " + str(rule[0][1]) + " (Conf: " + str(float(rule[1])*100) + "%, Supp: " + str(int(float(rule[2])*100)) + "%)\n")
