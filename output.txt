@@ -1,9 +1,26 @@
-==Frequent itemsets (min_sup=70.0%)
+==Frequent itemsets (min_sup=10.0%)
 ['pen'], 100%
 ['ink'], 75%
 ['diary'], 75%
 ['pen', 'ink'], 75%
 ['pen', 'diary'], 75%
-==High-confidence association rules (min_conf=80.0%)
+['soap'], 50%
+['ink', 'diary'], 50%
+['pen', 'soap'], 50%
+['ink', 'soap'], 50%
+['pen', 'ink', 'diary'], 50%
+['pen', 'ink', 'soap'], 50%
+['diary', 'soap'], 25%
+['ink', 'diary', 'soap'], 25%
+['pen', 'diary', 'soap'], 25%
+==High-confidence association rules (min_conf=10.0%)
 ['ink'] => ['pen'] (Conf: 100.0%, Supp: 75%)
 ['diary'] => ['pen'] (Conf: 100.0%, Supp: 75%)
+['diary'] => ['ink'] (Conf: 66.66666666666666%, Supp: 50%)
+['soap'] => ['pen'] (Conf: 100.0%, Supp: 50%)
+['soap'] => ['diary'] (Conf: 50.0%, Supp: 25%)
+['soap'] => ['ink'] (Conf: 100.0%, Supp: 50%)
+['diary', 'soap'] => ['ink'] (Conf: 20.0%, Supp: 25%)
+['ink', 'diary'] => ['pen'] (Conf: 33.33333333333333%, Supp: 50%)
+['diary', 'soap'] => ['pen'] (Conf: 20.0%, Supp: 25%)
+['ink', 'soap'] => ['pen'] (Conf: 40.0%, Supp: 50%)
