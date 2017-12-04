@@ -83,6 +83,7 @@ def apriori(records, things, mSupport, mConfidence):
 		newSelect = msupCheck(records,newCurrent,mSupport)
 		everything[i] = newSelect
 
+	print(everything)
 	allRecs = len(records)
 	for pair in everything.items():
 		i =0
@@ -108,16 +109,15 @@ def apriori(records, things, mSupport, mConfidence):
 			totalSup = 0
 			changedList = list(elm[1:])
 			if changedList:
-				for elm in changedList:
-					totalSup += float(itemfreq[(elm)])/allRecs
+				for e in changedList:
+					totalSup += float(itemfreq[(e)])/allRecs
 				conf = (level/totalSup)
 			print(changedList)
 			if changedList:
 				if mConfidence <= conf:
-					Rules.append(((elm, changedList), conf, level))
+					Rules.append(((changedList, [elm[0]]), conf, level))
 			i = i +1
 
-	print(Rules)
 	return finalItems, Rules
 	
 data = sys.argv[1]
