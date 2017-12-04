@@ -1,4 +1,4 @@
-==Frequent itemsets (min_sup=10.0%)
+==Frequent itemsets (min_sup=30.0%)
 [0], 0%
-==High-confidence association rules (min_conf=10.0%)
+==High-confidence association rules (min_conf=20.0%)
 [1] => [1] (Conf: 100.0%, Supp: 100%)
