@@ -10,7 +10,7 @@ order = {}
 def msupCheck(records, items, mSupport):
 	selected = []
 	current= {}
-	uniqueThings = list(set(items))
+	uniqueThings = set(items)
 	for item in uniqueThings:
 		for record in records:
 			exam= []
