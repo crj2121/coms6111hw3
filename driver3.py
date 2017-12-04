@@ -2,28 +2,26 @@ import sys
 import csv
 
 #collect the frequency of each item
-itemfreq  = {} #(setCount)
+#itemfreq  = {} #(setCount)
 #preserves dictionary order 
 order = {} # largeOne
 everything = {} #largeSet
 import itertools
 
-def apriori(records, things, mSupport, mConfidence):
-	#check which items are above mSupport
+def msupCheck(records, items, mSupport, itemfreq):
 	selected = []
 	current= {}
-	trans = 0
 	uniqueThings = list(set(things))
 	for item in uniqueThings:
 		for record in records:
-			val = True
-			for i in item:
-				if i in record:
-					record.remove(i)
-				else:
-					val = False
+			#val = True
+			#for i in item:
+				#if i in record:
+					#record.remove(i)
+				#else:
+				#	val = False
 
-			if item in record or val:
+			if item in record: #or val:
 				if item in itemfreq:
 					itemfreq[item] += 1
 				else:
@@ -36,8 +34,16 @@ def apriori(records, things, mSupport, mConfidence):
 		
 		for pair in current.items():
 			total = len(records)
-			if float((pair[1])/total) >= mSupport:
+			if (float(pair[1]))/total >= mSupport:
 				selected.append((pair[0]))
+
+	return selected
+
+def apriori(records, things, mSupport, mConfidence):
+	#check which items are above mSupport
+	itemfreq  = {}
+	trans = 0
+	selected = msupCheck(records, things, mSupport, itemfreq)
 		
 	totalTrans = 0
 	for record in records:
@@ -45,56 +51,33 @@ def apriori(records, things, mSupport, mConfidence):
 		recLen = len(record)
 		totalTrans = recLen
 		currItems = []
-	i=0
-	while i < recLen:
-		x=0
-		while x < len(selected):
-			if record[i] in selected[x]:
-				select = record[i]
-				currItems.append(select)
-			x=x+1
+		i=0
+		while i < recLen:
+			x=0
+			while x < len(selected):
+				if record[i] in selected[x]:
+					select = record[i]
+					currItems.append(select)
+				x=x+1
 			order[trans] = currItems
-		i = i+1
+			i = i+1
 
-	for c in range(1,totalTrans +1):
-		possible = []
-		for pair in order.items():
-			combos = []
-			combos = itertools.combinations(pair[1],c)
-			print('hey')
-			print(pair[1])
-			for combo in combos:
-				possible.append(combo)
-		for p in possible:
-			newCurrent = []
-			newCurrent.append(tuple(p))
-		print('hey2')
-    	#where there's things change with newCurrent 
-		selectedTwo = []
-		currentTwo= {}
-		uniqueThings = list(set(newCurrent))
-		for item in uniqueThings:
-			print('hey3')
-			for record in records:
-				if item in record:
-					if item in itemfreq:
-						itemfreq[item] += 1
-					else:
-						itemfreq[item] = 0
-					if item in current:
-						currentTwo[item] += 1
-					else:
-						currentTwo[item] = 0
-        #finding items that are greater than mSupport
-			print('d')
-			for pair in current.items():
-				total = len(records)
-				if float((pair[1])/total) >= mSupport:
-					selectedTwo.append((pair[0]))
-			print('s')
-		print(totalTrans)
-		print(c)
-		print(selectedTwo)
+	k = 1
+	while(k < totalTrans+ 1):
+		subsetList = []
+		for key, value in order.items():
+			for subset in itertools.combinations(value, k):
+				subsetList.append(subset)
+		print('h')
+		currentLarge = [tuple(row) for row in subsetList]
+		current = msupCheck(records,currentLarge,mSupport,itemfreq)
+		print(current)
+		currentLarge = current
+		everything[k] = currentLarge
+		k = k + 1
+
+	print(currentLarge)
+		
 
 
 
