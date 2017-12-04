@@ -21,12 +21,10 @@ def msupCheck(records, items, mSupport):
 				exam.append(y)
 			try:
 				for i in item:
-					exam.remove(i)
 					val = True
-
+					exam.remove(i)
 			except ValueError:
 				val = False
-			
 			if item in record or val:
 				if item in itemfreq:
 					itemfreq[item] += 1
@@ -37,7 +35,6 @@ def msupCheck(records, items, mSupport):
 				else:
 					current[item] = 1
         #finding items that are greater than mSupport
-		
 		for pair in current.items():
 			total = len(records)
 			if (float(pair[1]))/total >= mSupport:
@@ -47,11 +44,11 @@ def msupCheck(records, items, mSupport):
 
 def apriori(records, things, mSupport, mConfidence):
 	#check which items are above mSupport
-	
 	trans = 0
 	selected = msupCheck(records, things, mSupport)	
 	finalItems  = []
 	Rules = []
+	print(-1)
 	totalTrans = 0
 	for record in records:
 		trans += 1
@@ -68,7 +65,7 @@ def apriori(records, things, mSupport, mConfidence):
 				x +=1
 				order[trans] = currItems
 			i +=1
-
+	print(0)
 	for i in range(1,totalTrans +1):
 		possible = []
 		for pair in order.items():
@@ -82,9 +79,8 @@ def apriori(records, things, mSupport, mConfidence):
 		#currentLarge = [tuple(row) for row in possible]
 		newSelect = msupCheck(records,newCurrent,mSupport)
 		everything[i] = newSelect
-
-	print(everything)
 	allRecs = len(records)
+	print(1)
 	for pair in everything.items():
 		i =0
 		while i < len(pair[1]):
@@ -96,6 +92,7 @@ def apriori(records, things, mSupport, mConfidence):
 
 			i = i +1 
 			#gather final rules support 
+	print(2)
 	for pair in everything.items():
 		i =0
 		while i < len(pair[1]):
@@ -117,7 +114,6 @@ def apriori(records, things, mSupport, mConfidence):
 				if mConfidence <= conf:
 					Rules.append(((changedList, [elm[0]]), conf, level))
 			i = i +1
-
 	return finalItems, Rules
 	
 data = sys.argv[1]
