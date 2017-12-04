@@ -1,7 +1,7 @@
 ==Frequent itemsets (min_sup=70.0%)
 ['pen'], 100%
-['diary'], 75%
 ['ink'], 75%
+['diary'], 75%
 ['pen', 'ink'], 75%
 ['pen', 'diary'], 75%
 ==High-confidence association rules (min_conf=80.0%)

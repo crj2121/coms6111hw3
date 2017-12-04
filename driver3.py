@@ -107,7 +107,7 @@ def apriori(records, things, mSupport, mConfidence):
 			changedList = []
 			#removing the first element of elm
 			totalSup = 0
-			changedList = list(elm[1:])
+			changedList = list(elm[1:len(elm)])
 			if changedList:
 				for e in changedList:
 					totalSup += float(itemfreq[(e)])/allRecs
