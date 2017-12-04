@@ -1,1 +1,1 @@
-==Frequent itemsets (min_sup=20.0%)
+==Frequent itemsets (min_sup=10.0%)

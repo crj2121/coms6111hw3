@@ -15,13 +15,14 @@ def msupCheck(records, items, mSupport):
 	#print(uniqueThings)
 	for item in uniqueThings:
 		for record in records:
-			val = True
 			exam= []
+			val = True
 			for y in record:
 				exam.append(y)
 			try:
 				for i in item:
 					exam.remove(i)
+					val = True
 
 			except ValueError:
 				val = False
@@ -30,11 +31,11 @@ def msupCheck(records, items, mSupport):
 				if item in itemfreq:
 					itemfreq[item] += 1
 				else:
-					itemfreq[item] = 0
+					itemfreq[item] = 1
 				if item in current:
 					current[item] += 1
 				else:
-					current[item] = 0
+					current[item] = 1
         #finding items that are greater than mSupport
 		
 		for pair in current.items():
@@ -42,8 +43,9 @@ def msupCheck(records, items, mSupport):
 			if (float(pair[1]))/total >= mSupport:
 				if pair[0] not in selected:
 					selected.append((pair[0]))
-
+	print(selected)
 	return selected
+	print(itemfreq)
 
 def apriori(records, things, mSupport, mConfidence):
 	#check which items are above mSupport
@@ -90,7 +92,7 @@ def apriori(records, things, mSupport, mConfidence):
 			#gather final items
 			first = list(pair[1][i])
 			finalItems.append(first)
-			level = itemfreq[(pair[1][i])]/allRecs
+			level = float(itemfreq[(pair[1][i])])/allRecs
 			finalItems.append(float(level))
 
 			i = i +1 
