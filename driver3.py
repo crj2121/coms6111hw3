@@ -1,7 +1,7 @@
 import sys
 import csv
 import itertools
-
+from operator import itemgetter
 
 everything = {} 
 itemfreq  = {}
@@ -43,9 +43,7 @@ def msupCheck(records, items, mSupport):
 			if (float(pair[1]))/total >= mSupport:
 				if pair[0] not in selected:
 					selected.append((pair[0]))
-	print(selected)
 	return selected
-	print(itemfreq)
 
 def apriori(records, things, mSupport, mConfidence):
 	#check which items are above mSupport
@@ -112,13 +110,6 @@ def apriori(records, things, mSupport, mConfidence):
 					Rules.append(((elm[0], changedList), conf, level))
 			i = i +1
 
-
-	print ('\n')
-	print(finalItems)
-	print ('\n')
-	print(Rules)
-	print ('\n')	
-
 	return finalItems, Rules
 	
 data = sys.argv[1]
@@ -138,7 +129,8 @@ output = open('output.txt', 'w')
 output.write("==Frequent itemsets (min_sup=" + str(float(mSupport)*100) + "%)\n")
 it = iter(newThings)
 newerThings = zip(it, it)
-for thing in newerThings:
+newestThings = sorted(newerThings, key=lambda x: x[1], reverse = True)
+for thing in newestThings:
 	output.write(str(thing[0]) + ", " + str(int(float(thing[1])*100)) + "%\n")
 output.write("==High-confidence association rules (min_conf=" + str(float(mConfidence)*100) + "%)\n")
 for rule in newRules:
