@@ -1,26 +1,27 @@
 ==Frequent itemsets (min_sup=10.0%)
-['soap'], 50%
-['diary'], 75%
-['ink'], 75%
 ['pen'], 100%
-['diary', 'soap'], 25%
-['pen', 'diary'], 75%
-['ink', 'diary'], 50%
-['ink', 'soap'], 50%
-['pen', 'soap'], 50%
+['ink'], 75%
+['diary'], 75%
 ['pen', 'ink'], 75%
+['pen', 'diary'], 75%
+['soap'], 50%
+['pen', 'soap'], 50%
+['ink', 'soap'], 50%
+['ink', 'diary'], 50%
+['pen', 'ink', 'soap'], 50%
+['pen', 'ink', 'diary'], 50%
+['diary', 'soap'], 25%
 ['pen', 'diary', 'soap'], 25%
 ['ink', 'diary', 'soap'], 25%
-['pen', 'ink', 'diary'], 50%
-['pen', 'ink', 'soap'], 50%
-==High-confidence association rules (min_conf=20.0%)
-diary => ['soap'] (Conf: 66.66666666666666%, Supp: 50%)
-pen => ['diary'] (Conf: 50.0%, Supp: 50%)
-ink => ['diary'] (Conf: 66.66666666666666%, Supp: 50%)
-ink => ['soap'] (Conf: 66.66666666666666%, Supp: 50%)
-pen => ['soap'] (Conf: 50.0%, Supp: 50%)
-pen => ['ink'] (Conf: 50.0%, Supp: 50%)
-pen => ['diary', 'soap'] (Conf: 50.0%, Supp: 50%)
-ink => ['diary', 'soap'] (Conf: 66.66666666666666%, Supp: 50%)
-pen => ['ink', 'diary'] (Conf: 50.0%, Supp: 50%)
-pen => ['ink', 'soap'] (Conf: 50.0%, Supp: 50%)
+==High-confidence association rules (min_conf=10.0%)
+pen => ['soap'] (Conf: 25.0%, Supp: 25%)
+ink => ['soap'] (Conf: 33.33333333333333%, Supp: 25%)
+diary => ['soap'] (Conf: 33.33333333333333%, Supp: 25%)
+ink => ['diary'] (Conf: 33.33333333333333%, Supp: 25%)
+pen => ['ink'] (Conf: 25.0%, Supp: 25%)
+pen => ['diary'] (Conf: 25.0%, Supp: 25%)
+pen => ['ink', 'soap'] (Conf: 25.0%, Supp: 25%)
+pen => ['diary', 'soap'] (Conf: 25.0%, Supp: 25%)
+pen => ['ink', 'diary'] (Conf: 25.0%, Supp: 25%)
+ink => ['diary', 'soap'] (Conf: 33.33333333333333%, Supp: 25%)
+>>>>>>> 2b69e18fc5cce7a69f800e6c6e86246035cda13d
