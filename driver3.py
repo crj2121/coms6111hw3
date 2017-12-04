@@ -1,27 +1,32 @@
 import sys
 import csv
-
-#collect the frequency of each item
-#itemfreq  = {} #(setCount)
-#preserves dictionary order 
-order = {} # largeOne
-everything = {} #largeSet
 import itertools
 
-def msupCheck(records, items, mSupport, itemfreq):
+
+everything = {} 
+itemfreq  = {}
+order = {} 
+
+def msupCheck(records, items, mSupport):
 	selected = []
 	current= {}
-	uniqueThings = list(set(things))
+	uniqueThings = list(set(items))
+
+	#print(uniqueThings)
 	for item in uniqueThings:
 		for record in records:
-			#val = True
-			#for i in item:
-				#if i in record:
-					#record.remove(i)
-				#else:
-				#	val = False
+			val = True
+			exam= []
+			for y in record:
+				exam.append(y)
+			try:
+				for i in item:
+					exam.remove(i)
 
-			if item in record: #or val:
+			except ValueError:
+				val = False
+			
+			if item in record or val:
 				if item in itemfreq:
 					itemfreq[item] += 1
 				else:
@@ -35,16 +40,19 @@ def msupCheck(records, items, mSupport, itemfreq):
 		for pair in current.items():
 			total = len(records)
 			if (float(pair[1]))/total >= mSupport:
-				selected.append((pair[0]))
+				if pair[0] not in selected:
+					selected.append((pair[0]))
 
 	return selected
 
 def apriori(records, things, mSupport, mConfidence):
 	#check which items are above mSupport
-	itemfreq  = {}
+	
 	trans = 0
-	selected = msupCheck(records, things, mSupport, itemfreq)
-		
+	selected = msupCheck(records, things, mSupport)	
+	finalItems  = []
+	Rules = []
+	print(selected)
 	totalTrans = 0
 	for record in records:
 		trans += 1
@@ -53,40 +61,66 @@ def apriori(records, things, mSupport, mConfidence):
 		currItems = []
 		i=0
 		while i < recLen:
-			x=0
+			x = 0
 			while x < len(selected):
 				if record[i] in selected[x]:
 					select = record[i]
 					currItems.append(select)
-				x=x+1
-			order[trans] = currItems
-			i = i+1
+				x +=1
+				order[trans] = currItems
+			i +=1
 
-	k = 1
-	while(k < totalTrans+ 1):
-		subsetList = []
-		for key, value in order.items():
-			for subset in itertools.combinations(value, k):
-				subsetList.append(subset)
-		print('h')
-		currentLarge = [tuple(row) for row in subsetList]
-		current = msupCheck(records,currentLarge,mSupport,itemfreq)
-		print(current)
-		currentLarge = current
-		everything[k] = currentLarge
-		k = k + 1
+	for i in range(1,totalTrans +1):
+		possible = []
+		for pair in order.items():
+			combos = []
+			combos = itertools.combinations(pair[1], i)
+			for combo in combos:
+				possible.append(combo)
+		newCurrent = []
+		for p in possible:
+			newCurrent.append(tuple(p))
+		#currentLarge = [tuple(row) for row in possible]
+		newSelect = msupCheck(records,newCurrent,mSupport)
+		print(newSelect)
+		everything[i] = newSelect
 
-	print(currentLarge)
-		
+	allRecs = len(records)
+	for pair in everything.items():
+		i =0
+		while i < len(pair[1]):
+			#gather final items
+			first = list(pair[1][i])
+			finalItems.append(first)
+			level = itemfreq[(pair[1][i])]/allRecs
+			finalItems.append(float(level))
+
+			i = i +1 
+			#gather final rules support 
+	for pair in everything.items():
+		i =0
+		while i < len(pair[1]):
+			elm = pair[1][i]
+			gather = itemfreq[elm[0]]/allRecs
+			conf = float(level/gather)
+			changedList = []
+			#removing the first element of elm
+			changedList = list(elm[1:])
+			
+			if changedList:
+				if mConfidence <= conf:
+					Rules.append(((elm[0], changedList), conf, level))
+			i = i +1
 
 
 
+	print(finalItems)
+	print ('\n')
+	print ('\n')
+	print ('\n')
+	print(Rules)	
 
-
-
-		
-
-	return [(0,0)], [((1, 1), 1, 1)]
+	return finalItems, Rules
 	
 data = sys.argv[1]
 mSupport = float(sys.argv[2])
