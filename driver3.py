@@ -137,7 +137,7 @@ output.write("==Frequent itemsets (min_sup=" + str(float(mSupport)*100) + "%)\n"
 it = iter(newThings)
 newerThings = zip(it, it)
 for thing in newerThings:
-	output.write("[" + str(thing[0]) + "]" + ", " + str(int(float(thing[1])*100)) + "%\n")
+	output.write(str(thing[0]) + ", " + str(int(float(thing[1])*100)) + "%\n")
 output.write("==High-confidence association rules (min_conf=" + str(float(mConfidence)*100) + "%)\n")
 for rule in newRules:
-	output.write("[" + str(rule[0][0]) + "]" + " => " + "[" + str(rule[0][1]) + "] (Conf: " + str(float(rule[1])*100) + "%, Supp: " + str(int(float(rule[2])*100)) + "%)\n")
+	output.write(str(rule[0][0]) + " => " + str(rule[0][1]) + " (Conf: " + str(float(rule[1])*100) + "%, Supp: " + str(int(float(rule[2])*100)) + "%)\n")
