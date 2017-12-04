@@ -98,18 +98,26 @@ def apriori(records, things, mSupport, mConfidence):
 	for pair in everything.items():
 		i =0
 		while i < len(pair[1]):
+
 			elm = pair[1][i]
 			gather = itemfreq[elm[0]]/allRecs
+			level = float(itemfreq[(pair[1][i])])/allRecs
 			conf = float(level/gather)
 			changedList = []
 			#removing the first element of elm
+			totalSup = 0
 			changedList = list(elm[1:])
-			
+			if changedList:
+				for elm in changedList:
+					totalSup += float(itemfreq[(elm)])/allRecs
+				conf = (level/totalSup)
+			print(changedList)
 			if changedList:
 				if mConfidence <= conf:
-					Rules.append(((elm[0], changedList), conf, level))
+					Rules.append(((elm, changedList), conf, level))
 			i = i +1
 
+	print(Rules)
 	return finalItems, Rules
 	
 data = sys.argv[1]
