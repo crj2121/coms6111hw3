@@ -52,7 +52,6 @@ def apriori(records, things, mSupport, mConfidence):
 	selected = msupCheck(records, things, mSupport)	
 	finalItems  = []
 	Rules = []
-	print(selected)
 	totalTrans = 0
 	for record in records:
 		trans += 1
@@ -82,7 +81,6 @@ def apriori(records, things, mSupport, mConfidence):
 			newCurrent.append(tuple(p))
 		#currentLarge = [tuple(row) for row in possible]
 		newSelect = msupCheck(records,newCurrent,mSupport)
-		print(newSelect)
 		everything[i] = newSelect
 
 	allRecs = len(records)
@@ -113,12 +111,11 @@ def apriori(records, things, mSupport, mConfidence):
 			i = i +1
 
 
-
+	print ('\n')
 	print(finalItems)
 	print ('\n')
-	print ('\n')
-	print ('\n')
-	print(Rules)	
+	print(Rules)
+	print ('\n')	
 
 	return finalItems, Rules
 	
